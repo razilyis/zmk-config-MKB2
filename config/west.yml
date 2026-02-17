@@ -17,7 +17,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: v0.3.0
       import: app/west.yml
     - name: zmk-rgbled-widget
       remote: caksoylar
@@ -47,4 +47,5 @@ manifest:
     path: config
 
     
+
 
