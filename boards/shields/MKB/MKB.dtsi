@@ -3,6 +3,13 @@
 #include <behaviors/rgbled_widget.dtsi>
 
 / {
+    behaviors {
+        touchpass: touchpass {
+            compatible = "zmk,behavior-none";
+            #binding-cells = <0>;
+        };
+    };
+    
 	chosen {
 		zmk,physical-layout = &layout_MKB;
 	};

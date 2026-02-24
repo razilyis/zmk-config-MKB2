@@ -14,6 +14,8 @@ manifest:
       url-base: https://github.com/mctechnology17
     - name: petejohanson
       url-base: https://github.com/petejohanson
+    - name: razilyis
+      url-base: https://github.com/razilyis
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -42,6 +44,9 @@ manifest:
       revision: main
     - name: zmk-driver-MLX90393
       remote: te9no
+      revision: main
+    - name: zmk-module-touchpass
+      url: /Users/ryosaitoh/Desktop/git/zmk-module-TouchPass
       revision: main
   self:
     path: config

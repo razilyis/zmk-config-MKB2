@@ -1,0 +1,113 @@
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+    behaviors {
+        touchpass: touchpass {
+            compatible = "zmk,behavior-touchpass";
+            #binding-cells = <0>;
+        };
+    };
+
+    chosen {
+        /* Redirect all UART0-based chosen nodes to USB CDC ACM */
+        /delete-property/ zephyr,console;
+        /delete-property/ zephyr,shell-uart;
+        zephyr,console = &usb_cdc_acm_uart;
+        zephyr,shell-uart = &usb_cdc_acm_uart;
+        zephyr,uart-mcumgr = &usb_cdc_acm_uart;
+        zephyr,bt-mon-uart = &usb_cdc_acm_uart;
+        zephyr,bt-c2h-uart = &usb_cdc_acm_uart;
+        /* Remove OLED display (not used in FPM build) */
+        /delete-property/ zephyr,display;
+    };
+};
+
+&usbd {
+    status = "okay";
+    usb_cdc_acm_uart: usb_cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
+
+/* --- Encoder Configuration (Re-enabled with debouncing) --- */
+&left_encoder {
+    a-gpios = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    steps = <35>;
+    status = "okay";
+};
+
+&sensors {
+    triggers-per-rotation = <35>;
+    status = "okay";
+};
+
+/* --- Disable I2C busses to avoid pin/power interference --- */
+&i2c0 {
+    status = "disabled";
+};
+
+&i2c1 {
+    status = "disabled";
+};
+
+&oled {
+    status = "disabled";
+};
+
+/* --- UART Configuration for TouchPass (Using standard uart0) --- */
+&pinctrl {
+    uart0_default: uart0_default {
+        group1 {
+            psels = <NRF_PSEL(UART_TX, 0, 4)>; // D4 (AD-X) → sensor RX
+        };
+        group2 {
+            psels = <NRF_PSEL(UART_RX, 0, 5)>; // D5 (AD-Y) ← sensor TX
+            bias-pull-up;
+        };
+    };
+
+    uart0_sleep: uart0_sleep {
+        group1 {
+            psels = <NRF_PSEL(UART_TX, 0, 4)>,
+                    <NRF_PSEL(UART_RX, 0, 5)>;
+            low-power-enable;
+        };
+    };
+};
+
+&uart0 {
+    status = "okay";
+    current-speed = <57600>;
+    pinctrl-0 = <&uart0_default>;
+    pinctrl-1 = <&uart0_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+/* Analog (JOY) is NOT enabled */
+
+&flash0 {
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        /* Shrink code_partition to make room for touchpass_partition at 0xe4000 */
+        /* Default ends at 0xec000; shrink to 0xe4000 (0x27000 + 0xbd000 = 0xe4000) */
+        code_partition: partition@27000 {
+            reg = <0x00027000 0x000bd000>;
+        };
+
+        touchpass_partition: partition@e4000 {
+            label = "touchpass";
+            reg = <0x000e4000 0x00008000>;
+        };
+
+        storage_partition: partition@ec000 {
+            label = "storage";
+            reg = <0x000ec000 0x00008000>;
+        };
+    };
+};
+

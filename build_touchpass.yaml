@@ -1,0 +1,20 @@
+---
+# TouchPass build: MKB_L_FPM + MKB_R_TBv3 + settings_reset
+# Usage: ./build_and_package.sh zmk-config-MKB2 ~/Downloads build_touchpass.yaml
+include:
+  - board: seeeduino_xiao_ble
+    shield: MKB_L_Base MKB_L_FPM rgbled_adapter
+    # zmk-usb-logging conflicts with ZMK_TOUCHPASS_SERIAL_RPC.
+    # studio-rpc-usb-uart forces CONFIG_UART_INTERRUPT_DRIVEN=y which breaks poll_in.
+    # Therefore, omitting these snippets specifically for FPM.
+    snippet: Default
+    artifact-name: MKB_L_MODULE_FPM
+
+  - board: seeeduino_xiao_ble
+    shield: MKB_R_Base MKB_R_TBv3 rgbled_adapter nice_oled
+    snippet: zmk-usb-logging studio-rpc-usb-uart
+    artifact-name: MKB_R_MODULE_TBv3
+
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
+    artifact-name: settings_reset
