@@ -45,8 +45,8 @@ manifest:
     - name: zmk-driver-MLX90393
       remote: te9no
       revision: main
-    - name: razilyis
-      remote: zmk-module-TouchPass
+    - name: zmk-module-touchpass
+      url: /Users/ryosaitoh/Desktop/git/zmk-module-Fingerprint
       revision: main
   self:
     path: config
