@@ -45,12 +45,13 @@ manifest:
     - name: zmk-driver-MLX90393
       remote: te9no
       revision: main
-    - name: zmk-module-touchpass
-      url: /Users/ryosaitoh/Desktop/git/zmk-module-TouchPass
+    - name: razilyis
+      remote: zmk-module-TouchPass
       revision: main
   self:
     path: config
 
     
+
 
 
