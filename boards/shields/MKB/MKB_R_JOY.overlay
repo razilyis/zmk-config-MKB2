@@ -3,6 +3,16 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <dt-bindings/zmk/keys.h>
 
+&kscan1 {
+    gpios
+        = <&xiao_d  0 (GPIO_ACTIVE_HIGH)>
+        , <&xiao_d  1 (GPIO_ACTIVE_HIGH)>
+        /* Exclude D2, D3 (&xiao_d 2, 3) to avoid conflict with ADC for joystick */
+        , <&gpio0   9 (GPIO_ACTIVE_HIGH)>
+        , <&gpio0  10 (GPIO_ACTIVE_HIGH)>
+        ;
+};
+
 &adc {
 	status = "okay";
 };
