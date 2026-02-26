@@ -24,12 +24,14 @@
 / {
     behaviors {
         // TouchPass (Fingerprint)
+
         touchpass: touchpass {
             compatible = "zmk,behavior-touchpass";
             #binding-cells = <0>;
         };
 
         // Layout Shift - Override &kp
+
         original_key_press: original_key_press {
             compatible = "zmk,behavior-key-press";
             #binding-cells = <1>;
@@ -43,6 +45,7 @@
         };
 
         // Layout Shift - Additional behaviors
+
         kpls: layout_shift_key_press_alias {
             compatible = "zmk,behavior-layout-shift-key-press";
             #binding-cells = <1>;
@@ -240,7 +243,7 @@
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &bt BT_CLR_ALL  &trans      &trans     &trans     &trans     &trans
 &trans      &trans        &trans        &trans        &trans        &trans            &trans          &trans      &trans     &trans     &trans     &trans
 &trans      &trans        &trans        &trans        &trans        &trans            &studio_unlock  &touchpass  &trans     &trans     &trans     &trans
-&trans      &trans        &trans                      &to WIN_DEF   &to MAC_DEF       &trans          &trans                 &trans     &trans     &trans
+&trans      &trans        &trans                      &to WIN_DEF   &to MAC_DEF       &trans          &touchpass             &trans     &trans     &trans
 &kp LEFT    &kp UP        &kp SPACE     &kp DOWN      &kp RIGHT                                       &kp HOME    &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
                                         &kp A                                                                     &kp B
             >;
