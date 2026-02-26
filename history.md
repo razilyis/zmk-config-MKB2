@@ -1,0 +1,11 @@
+- **目的**: Keymap Editor (GUI) での利便性向上のため、Behavior 定義を外部インクルードから直接記述に変更。
+- **実施内容**:
+    - `config/mkb.keymap`:
+        - `#include <layout_shift_kp_override.dtsi>` を削除。
+        - `behaviors` ブロックに `touchpass` および `Layout Shift` 関連の全定義を直接展開。
+        - 外部モジュールを編集せずに GUI で全ての Behavior が編集可能になった。
+    - `boards/shields/MKB/MKB_L_FPM.overlay`:
+        - `#include <behaviors/touchpass.dtsi>` を削除（Keymap 側で定義されるため）。
+- **影響範囲**:
+    - `TouchPass` ブランチのビルド成果物。
+    - Keymap Editor での操作。
