@@ -1,0 +1,37 @@
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/ryosaitoh/Desktop/git/zmk/app
+-- CMake version: 4.2.3
+-- Found Python3: /opt/homebrew/opt/python@3.14/bin/python3.14 (found suitable version "3.14.3", minimum required is "3.8") found components: Interpreter
+-- Cache files will be written to: /Users/ryosaitoh/Library/Caches/zephyr
+-- Zephyr version: 3.5.0 (/Users/ryosaitoh/Desktop/git/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Adding /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/boards/shields/MKB
+-- Adding /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/boards/shields/MKB
+-- Adding /Users/ryosaitoh/Desktop/git/zmk/app/boards/shields/MKB_L_Base
+-- ZMK Config directory: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/config
+-- Using keymap file: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/config/MKB.keymap
+-- Board: seeeduino_xiao_ble
+-- Shield(s): MKB_L_Base MKB_L_FPM
+-- ZEPHYR_TOOLCHAIN_VARIANT not set, trying to locate Zephyr SDK
+-- Found host-tools: zephyr 0.16.5 (/Users/ryosaitoh/zephyr-sdk-0.16.5)
+-- Found toolchain: zephyr 0.16.5 (/Users/ryosaitoh/zephyr-sdk-0.16.5)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.7.2", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/ryosaitoh/Desktop/git/zephyr/boards/arm/seeeduino_xiao_ble/seeeduino_xiao_ble.dts
+-- Found devicetree overlay: /Users/ryosaitoh/Desktop/git/zmk/app/boards/seeeduino_xiao_ble.overlay
+-- Found devicetree overlay: /Users/ryosaitoh/Desktop/git/zmk/app/boards/shields/MKB_L_Base/MKB_L_Base.overlay
+-- Found devicetree overlay: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/boards/shields/MKB/MKB_L_FPM.overlay
+-- Found devicetree overlay: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/config/MKB.keymap
+devicetree error: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/config/MKB.keymap:80 (column 202): parse error: expected number or parenthesized expression
+-- In: /Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final/zephyr, command: /opt/homebrew/opt/python@3.14/bin/python3.14;/Users/ryosaitoh/Desktop/git/zephyr/scripts/dts/gen_defines.py;--dts;/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final/zephyr/zephyr.dts.pre;--dtc-flags;'';--bindings-dirs;/Users/ryosaitoh/Desktop/git/zmk-rgbled-widget/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-pmw3610-driver/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-analog-input-driver/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-layout-shift/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-input-processor-keybind/dts/bindings;/Users/ryosaitoh/Desktop/git/cirque-input-module/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-driver-MLX90393/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk-module-TouchPass/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk/app/module/dts/bindings;/Users/ryosaitoh/Desktop/git/zmk/app/dts/bindings;/Users/ryosaitoh/Desktop/git/zephyr/dts/bindings;--header-out;/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final/zephyr/include/generated/devicetree_generated.h.new;--dts-out;/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final/zephyr/zephyr.dts.new;--edt-pickle-out;/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final/zephyr/edt.pickle;--vendor-prefixes;/Users/ryosaitoh/Desktop/git/cirque-input-module/dts/bindings/vendor-prefixes.txt;--vendor-prefixes;/Users/ryosaitoh/Desktop/git/zmk/app/dts/bindings/vendor-prefixes.txt;--vendor-prefixes;/Users/ryosaitoh/Desktop/git/zephyr/dts/bindings/vendor-prefixes.txt
+CMake Error at /Users/ryosaitoh/Desktop/git/zephyr/cmake/modules/dts.cmake:279 (message):
+  gen_defines.py failed with return code: 1
+Call Stack (most recent call first):
+  /Users/ryosaitoh/Desktop/git/zephyr/cmake/modules/zephyr_default.cmake:129 (include)
+  /Users/ryosaitoh/Desktop/git/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /Users/ryosaitoh/Desktop/git/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)
+  CMakeLists.txt:9 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+FATAL ERROR: command exited with status 1: /opt/homebrew/bin/cmake -DWEST_PYTHON=/opt/homebrew/opt/python@3.14/bin/python3.14 -B/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/build/Syntax_Check_Final -GNinja -DBOARD=seeeduino_xiao_ble -DZMK_CONFIG=/Users/ryosaitoh/Desktop/git/zmk-config-MKB2/config '-DSHIELD=MKB_L_Base MKB_L_FPM' -DBOARD_ROOT=/Users/ryosaitoh/Desktop/git/zmk-config-MKB2 -DSNIPPET_ROOT=/Users/ryosaitoh/Desktop/git/zmk-config-MKB2 -S/Users/ryosaitoh/Desktop/git/zmk/app
