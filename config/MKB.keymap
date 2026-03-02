@@ -25,6 +25,15 @@
 };
 
 / {
+    behaviors {
+        touchpass: touchpass {
+            compatible = "zmk,behavior-touchpass";
+            #binding-cells = <0>;
+        };
+    };
+};
+
+/ {
     macros {
         // Windows用：Alt + Grave (~)
 
