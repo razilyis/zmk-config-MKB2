@@ -67,7 +67,7 @@
             #binding-cells = <1>;
             label = "LAYOUT_SHIFT_KEY_PRESS";
         };
- */
+
         // Layout Shift - Additional behaviors
         kpls: layout_shift_key_press_alias {
             compatible = "zmk,behavior-layout-shift-key-press";
@@ -103,6 +103,7 @@
             toggle-mode = "off";
             label = "LAYOUT_SHIFT_TOGGLE_OFF";
         };
+ */
     };
 
     macros {
