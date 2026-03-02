@@ -19,9 +19,11 @@
  * ここだけ数字を変えれば、全 &lt に反映されます。
  * 目安: 180〜260 / 親指キーなら 220〜280 が安定しがち
  * ------------------------------------------------------------ */
+
 #define LT_TAPPING_TERM 220
 
 /* 既存の Mod-Tap はそのまま */
+
 &mt {
     flavor = "balanced";
     tapping-term-ms = <280>;
@@ -30,9 +32,8 @@
 };
 
 /* ★ここが追加：&lt の tapping-term-ms だけ上書き */
-&lt {
-    tapping-term-ms = <LT_TAPPING_TERM>;
-};
+
+&lt { tapping-term-ms = <LT_TAPPING_TERM>; };
 
 /* ------------------------------------------------------------
  * 使い方（KeymapEditorで後から割り当てる用の例）
@@ -46,9 +47,10 @@
  * ※長押しは「押してる間だけレイヤーON、離すとOFF」
  * ------------------------------------------------------------ */
 
- / {
+/ {
     behaviors {
         // TouchPass (Fingerprint)
+
         touchpass: touchpass {
             compatible = "zmk,behavior-touchpass";
             #binding-cells = <0>;
@@ -108,6 +110,7 @@
 
     macros {
         // Windows用：Alt + Grave (~)
+
         ime_tog: ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -121,6 +124,7 @@
         };
 
         // macOS用：Ctrl + Space
+
         mac_ime: mac_ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -140,12 +144,12 @@
         win_default_layer {
             label = "Def";
             bindings = <
-&kp ESC    &kp Q        &kp W      &kp E     &kp R              &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &ime_tog
-&kp TAB    &kp A        &kp S      &kp D     &kp F              &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
-&kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V              &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
-&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM &ime_tog      &kp BACKSPACE  &lt WIN_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
-&kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                     &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
-                                   &kp A                                                                                      &kp B
+&kp ESC    &kp Q        &kp W     &kp E      &kp R              &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &ime_tog
+&kp TAB    &kp A        &kp S     &kp D      &kp F              &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
+&kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V              &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
+&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM      &ime_tog  &kp BACKSPACE             &lt WIN_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
+&kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                      &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
+                                  &kp END                                                                 &kp A
             >;
 
             sensor-bindings =
@@ -198,12 +202,12 @@
         mac_default_layer {
             label = "Def";
             bindings = <
-&kp ESC    &kp Q        &kp W      &kp E     &kp R                   &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &kp AT
-&kp TAB    &kp A        &kp S      &kp D     &kp F                   &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
-&kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V                   &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
-&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM &mac_ime      &kp BACKSPACE  &lt MAC_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
-&kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                          &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
-                                   &kp A                                                                                           &kp B
+&kp ESC    &kp Q        &kp W     &kp E      &kp R                   &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &kp AT
+&kp TAB    &kp A        &kp S     &kp D      &kp F                   &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
+&kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V                   &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
+&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM      &mac_ime  &kp BACKSPACE             &lt MAC_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
+&kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                           &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
+                                  &kp END                                                                      &kp A
             >;
 
             sensor-bindings =
@@ -215,7 +219,7 @@
             label = "Fnc";
             bindings = <
 &kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
-&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
+&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
 &kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
 &kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
 &kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
