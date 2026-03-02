@@ -141,7 +141,7 @@
 &kp ESC    &kp Q        &kp W     &kp E      &kp R              &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &ime_tog
 &kp TAB    &kp A        &kp S     &kp D      &kp F              &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
 &kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V              &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
-&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM &ime_tog  &kp BACKSPACE             &lt WIN_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
+&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM LANGUAGE_1  &kp BACKSPACE             &lt WIN_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
 &kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                      &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
                                   &kp END                                                                 &kp A
             >;
@@ -199,7 +199,7 @@
 &kp ESC    &kp Q        &kp W     &kp E      &kp R                   &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &kp AT
 &kp TAB    &kp A        &kp S     &kp D      &kp F                   &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
 &kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V                   &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
-&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM &mac_ime  &kp BACKSPACE             &lt MAC_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
+&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM LANGUAGE_1  &kp BACKSPACE             &lt MAC_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
 &kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                           &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
                                   &kp END                                                                      &kp A
             >;
