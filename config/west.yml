@@ -33,9 +33,9 @@ manifest:
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
-//    - name: zmk-layout-shift
-//      remote: kot149
-//      revision: v1
+    - name: zmk-layout-shift
+      remote: kot149
+      revision: v1
     - name: zmk-input-processor-keybind
       remote: te9no
       revision: main
@@ -52,6 +52,7 @@ manifest:
     path: config
 
     
+
 
 
 
