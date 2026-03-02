@@ -46,11 +46,11 @@
 
         // Layout Shift - Additional behaviors
 
-        kpls: layout_shift_key_press_alias {
-            compatible = "zmk,behavior-layout-shift-key-press";
-            #binding-cells = <1>;
-            label = "LAYOUT_SHIFT_KEY_PRESS_ALIAS";
-        };
+//        kpls: layout_shift_key_press_alias {
+//            compatible = "zmk,behavior-layout-shift-key-press";
+//            #binding-cells = <1>;
+//            label = "LAYOUT_SHIFT_KEY_PRESS_ALIAS";
+//        };
 
         mtls: layout_shift_mod_tap {
             compatible = "zmk,behavior-hold-tap";
