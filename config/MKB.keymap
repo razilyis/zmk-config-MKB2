@@ -64,7 +64,7 @@
 &kp ESC    &kp Q        &kp W      &kp E     &kp R              &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &ime_tog
 &kp TAB    &kp A        &kp S      &kp D     &kp F              &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
 &kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V              &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
-&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM LANGUAGE_2      &kp BACKSPACE  &lt WIN_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
+&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM LANGUAGE_2      &kp BACKSPACE  &lt WIN_SCR ENTER             &lt SETTING LANGUAGE_1  &kp DEL         &kp RCTRL
 &kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                     &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
                                    &kp A                                                                                      &kp B
             >;
@@ -77,12 +77,12 @@
         win_function_layer {
             label = "Fnc";
             bindings = <
-&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
-&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
-&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
-&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
-&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
-                                   &kp A                                                              &kp B
+&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LESS_THAN         &kp GREATER_THAN       &kp CARET        &kp PERCENT   &kp DOLLAR         &trans
+&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT           &kp AMPS      &kp DOUBLE_QUOTES  &trans
+&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT              &kp RBKT               &kp EXCLAMATION  &kp QUESTION  &kp SQT            &trans
+&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BACKSPACE         &kp ENTER                               &trans        &kp HASH           &trans
+&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                       &kp HOME               &kp PG_UP        &kp ENTER     &kp PG_DN          &kp END
+                                   &kp A                                                                               &kp B
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -105,12 +105,12 @@
         win_num_layer {
             label = "Num";
             bindings = <
-&kp ESC    &kp F1    &kp F2     &kp F3    &kp F4     &kp F5       &kp LS(EQUAL)  &kp MINUS     &kp N7     &kp N8     &kp N9     &trans
-&kp TAB    &kp F6    &kp F7     &kp F8    &kp F9     &kp F10      &kp EQUAL      &kp LS(SEMI)  &kp N4     &kp N5     &kp N6     &trans
-&kp LSHFT  &kp F11   &kp F12    &kp F13   &kp F14    &kp F15      &kp LS(N8)     &kp FSLH      &kp N1     &kp N2     &kp N3     &trans
-&kp LCTRL  &kp LGUI  &kp LALT             &trans     &trans       &kp BKSP       &kp ENTER                &trans     &kp N0     &trans
-&kp LEFT   &kp UP    &kp SPACE  &kp DOWN  &kp RIGHT                              &kp HOME      &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
-                                &kp A                                                          &kp B
+&kp ESC    &kp F1    &kp F2     &kp F3    &kp F4     &kp F5       &kp PLUS       &kp MINUS  &kp N7     &kp N8     &kp N9     &trans
+&kp TAB    &kp F6    &kp F7     &kp F8    &kp F9     &kp F10      &kp EQUAL      &kp COLON  &kp N4     &kp N5     &kp N6     &trans
+&kp LSHFT  &kp F11   &kp F12    &kp F13   &kp F14    &kp F15      &kp ASTERISK   &kp FSLH   &kp N1     &kp N2     &kp N3     &trans
+&kp LCTRL  &kp LGUI  &kp LALT             &trans     &trans       &kp BACKSPACE  &kp ENTER             &trans     &kp N0     &trans
+&kp LEFT   &kp UP    &kp SPACE  &kp DOWN  &kp RIGHT                              &kp HOME   &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
+                                &kp A                                                       &kp B
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -122,7 +122,7 @@
 &kp ESC    &kp Q        &kp W      &kp E     &kp R                   &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &kp AT
 &kp TAB    &kp A        &kp S      &kp D     &kp F                   &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
 &kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V                   &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
-&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM LANGUAGE_2      &kp BACKSPACE  &lt MAC_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
+&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM LANGUAGE_2      &kp BACKSPACE  &lt MAC_SCR ENTER             &lt SETTING LANGUAGE_1  &kp DEL         &kp RCTRL
 &kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                          &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
                                    &kp A                                                                                           &kp B
             >;
@@ -135,12 +135,12 @@
         mac_function_layer {
             label = "Fnc";
             bindings = <
-&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
-&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
-&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
-&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
-&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
-                                   &kp A                                                              &kp B
+&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LESS_THAN         &kp GREATER_THAN       &kp CARET        &kp PERCENT   &kp DOLLAR         &trans
+&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT           &kp AMPS      &kp DOUBLE_QUOTES  &trans
+&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT              &kp RBKT               &kp EXCLAMATION  &kp QUESTION  &kp SQT            &trans
+&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BACKSPACE         &kp ENTER                               &trans        &kp HASH           &trans
+&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                       &kp HOME               &kp PG_UP        &kp ENTER     &kp PG_DN          &kp END
+                                   &kp A                                                                               &kp B
             >;
 
             sensor-bindings =
@@ -167,12 +167,12 @@
         mac_num_layer {
             label = "Num";
             bindings = <
-&kp ESC    &kp F1    &kp F2     &kp F3    &kp F4     &kp F5       &kp LS(EQUAL)  &kp MINUS     &kp N7     &kp N8     &kp N9     &trans
-&kp TAB    &kp F6    &kp F7     &kp F8    &kp F9     &kp F10      &kp EQUAL      &kp LS(SEMI)  &kp N4     &kp N5     &kp N6     &trans
-&kp LSHFT  &kp F11   &kp F12    &kp F13   &kp F14    &kp F15      &kp LS(N8)     &kp FSLH      &kp N1     &kp N2     &kp N3     &trans
-&kp LCTRL  &kp LGUI  &kp LALT             &trans     &trans       &kp BKSP       &kp ENTER                &trans     &kp N0     &trans
-&kp LEFT   &kp UP    &kp SPACE  &kp DOWN  &kp RIGHT                              &kp HOME      &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
-                                &kp A                                                          &kp B
+&kp ESC    &kp F1    &kp F2     &kp F3    &kp F4     &kp F5       &kp PLUS       &kp MINUS  &kp N7     &kp N8     &kp N9     &trans
+&kp TAB    &kp F6    &kp F7     &kp F8    &kp F9     &kp F10      &kp EQUAL      &kp COLON  &kp N4     &kp N5     &kp N6     &trans
+&kp LSHFT  &kp F11   &kp F12    &kp F13   &kp F14    &kp F15      &kp ASTERISK   &kp FSLH   &kp N1     &kp N2     &kp N3     &trans
+&kp LCTRL  &kp LGUI  &kp LALT             &trans     &trans       &kp BACKSPACE  &kp ENTER             &trans     &kp N0     &trans
+&kp LEFT   &kp UP    &kp SPACE  &kp DOWN  &kp RIGHT                              &kp HOME   &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
+                                &kp A                                                       &kp B
             >;
 
             sensor-bindings =
