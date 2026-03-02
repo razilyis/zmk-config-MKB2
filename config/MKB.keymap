@@ -30,7 +30,7 @@
             #binding-cells = <0>;
         };
 
-/*        // Layout Shift - Override &kp
+        /*        // Layout Shift - Override &kp
 
         original_key_press: original_key_press {
             compatible = "zmk,behavior-key-press";
@@ -134,12 +134,12 @@
         win_function_layer {
             label = "Fnc";
             bindings = <
-&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
-&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
-&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
-&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
-&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
-                                   &kp A                                                              &kp B
+&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LESS_THAN         &kp GREATER_THAN       &kp CARET  &kp PERCENT   &kp DOLLAR         &trans
+&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT     &kp AMPS      &kp DOUBLE_QUOTES  &trans
+&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT              &kp RBKT               &kp EXCL   &kp QUESTION  &kp SQT            &trans
+&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP              &kp ENTER                         &trans        &kp HASH           &trans
+&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                       &kp HOME               &kp PG_UP  &kp ENTER     &kp PG_DN          &kp END
+                                   &kp A                                                                               &kp B
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
