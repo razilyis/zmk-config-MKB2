@@ -14,6 +14,14 @@
 #define SETTING 8
 #define MOUSE   9
 
+/* ------------------------------------------------------------
+ * Layer-Tap (&lt) の tapping-term-ms だけ調整できるようにする
+ * ここだけ数字を変えれば、全 &lt に反映されます。
+ * 目安: 180〜260 / 親指キーなら 220〜280 が安定しがち
+ * ------------------------------------------------------------ */
+#define LT_TAPPING_TERM 220
+
+/* 既存の Mod-Tap はそのまま */
 &mt {
     flavor = "balanced";
     tapping-term-ms = <280>;
@@ -21,10 +29,26 @@
     require-prior-idle-ms = <150>;
 };
 
-/ {
+/* ★ここが追加：&lt の tapping-term-ms だけ上書き */
+&lt {
+    tapping-term-ms = <LT_TAPPING_TERM>;
+};
+
+/* ------------------------------------------------------------
+ * 使い方（KeymapEditorで後から割り当てる用の例）
+ *
+ * タップ=Windows IMEトグル(ime_tog), 長押し=WIN_NUM:
+ *     &lt WIN_NUM &ime_tog
+ *
+ * タップ=mac IMEトグル(mac_ime), 長押し=MAC_NUM:
+ *     &lt MAC_NUM &mac_ime
+ *
+ * ※長押しは「押してる間だけレイヤーON、離すとOFF」
+ * ------------------------------------------------------------ */
+
+ / {
     behaviors {
         // TouchPass (Fingerprint)
-
         touchpass: touchpass {
             compatible = "zmk,behavior-touchpass";
             #binding-cells = <0>;
@@ -45,7 +69,6 @@
         };
  */
         // Layout Shift - Additional behaviors
-
         kpls: layout_shift_key_press_alias {
             compatible = "zmk,behavior-layout-shift-key-press";
             #binding-cells = <1>;
@@ -84,7 +107,6 @@
 
     macros {
         // Windows用：Alt + Grave (~)
-
         ime_tog: ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -98,7 +120,6 @@
         };
 
         // macOS用：Ctrl + Space
-
         mac_ime: mac_ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
