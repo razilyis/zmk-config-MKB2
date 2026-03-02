@@ -1,3 +1,6 @@
+// #include <layout_shift.dtsi>
+
+#include <layout_shift_kp_override.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -14,14 +17,6 @@
 #define SETTING 8
 #define MOUSE   9
 
-/* ------------------------------------------------------------
- * Layer-Tap (&lt) の tapping-term-ms だけ調整できるようにする
- * ここだけ数字を変えれば、全 &lt に反映されます。
- * 目安: 180〜260 / 親指キーなら 220〜280 が安定しがち
- * ------------------------------------------------------------ */
-#define LT_TAPPING_TERM 220
-
-/* 既存の Mod-Tap はそのまま */
 &mt {
     flavor = "balanced";
     tapping-term-ms = <280>;
@@ -29,83 +24,10 @@
     require-prior-idle-ms = <150>;
 };
 
-/* ★ここが追加：&lt の tapping-term-ms だけ上書き */
-&lt { tapping-term-ms = <LT_TAPPING_TERM>; };
-
-/* ------------------------------------------------------------
- * 使い方（KeymapEditorで後から割り当てる用の例）
- *
- * タップ=Windows IMEトグル(ime_tog), 長押し=WIN_NUM:
- *     &lt WIN_NUM &ime_tog
- *
- * タップ=mac IMEトグル(mac_ime), 長押し=MAC_NUM:
- *     &lt MAC_NUM &mac_ime
- *
- * ※長押しは「押してる間だけレイヤーON、離すとOFF」
- * ------------------------------------------------------------ */
-
- / {
-    behaviors {
-        // TouchPass (Fingerprint)
-        touchpass: touchpass {
-            compatible = "zmk,behavior-touchpass";
-            #binding-cells = <0>;
-        };
-
-#if 0
-        // Layout Shift - Override &kp
-        original_key_press: original_key_press {
-            compatible = "zmk,behavior-key-press";
-            #binding-cells = <1>;
-            label = "KEY_PRESS";
-        };
-
-        kp: key_press {
-            compatible = "zmk,behavior-layout-shift-key-press";
-            #binding-cells = <1>;
-            label = "LAYOUT_SHIFT_KEY_PRESS";
-        };
-
-        // Layout Shift - Additional behaviors
-        kpls: layout_shift_key_press_alias {
-            compatible = "zmk,behavior-layout-shift-key-press";
-            #binding-cells = <1>;
-            label = "LAYOUT_SHIFT_KEY_PRESS_ALIAS";
-        };
-
-        mtls: layout_shift_mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kpls>, <&kpls>;
-        };
-
-        tog_ls: toggle_layout_shift {
-            compatible = "zmk,behavior-layout-shift-toggle";
-            #binding-cells = <0>;
-            toggle-mode = "flip";
-            label = "LAYOUT_SHIFT_TOGGLE";
-        };
-
-        tog_ls_on: toggle_layout_shift_on {
-            compatible = "zmk,behavior-layout-shift-toggle";
-            #binding-cells = <0>;
-            toggle-mode = "on";
-            label = "LAYOUT_SHIFT_TOGGLE_ON";
-        };
-
-        tog_ls_off: toggle_layout_shift_off {
-            compatible = "zmk,behavior-layout-shift-toggle";
-            #binding-cells = <0>;
-            toggle-mode = "off";
-            label = "LAYOUT_SHIFT_TOGGLE_OFF";
-        };
-#endif
-    };
-
+/ {
     macros {
         // Windows用：Alt + Grave (~)
+
         ime_tog: ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -119,6 +41,7 @@
         };
 
         // macOS用：Ctrl + Space
+
         mac_ime: mac_ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -138,12 +61,12 @@
         win_default_layer {
             label = "Def";
             bindings = <
-&kp ESC    &kp Q        &kp W     &kp E      &kp R              &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &ime_tog
-&kp TAB    &kp A        &kp S     &kp D      &kp F              &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
-&kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V              &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
-&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM LANGUAGE_1  &kp BACKSPACE             &lt WIN_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
-&kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                      &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
-                                  &kp END                                                                 &kp A
+&kp ESC    &kp Q        &kp W      &kp E     &kp R              &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &ime_tog
+&kp TAB    &kp A        &kp S      &kp D     &kp F              &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
+&kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V              &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
+&kp LCTRL  &kp LGUI     &kp LALT             &lt WIN_FNC SPACE  &lt WIN_NUM LANGUAGE_2      &kp BACKSPACE  &lt WIN_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
+&kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                     &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
+                                   &kp A                                                                                      &kp B
             >;
 
             sensor-bindings =
@@ -154,12 +77,12 @@
         win_function_layer {
             label = "Fnc";
             bindings = <
-&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LESS_THAN         &kp GREATER_THAN       &kp CARET  &kp PERCENT   &kp DOLLAR         &trans
-&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT     &kp AMPS      &kp DOUBLE_QUOTES  &trans
-&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT              &kp RBKT               &kp EXCL   &kp QUESTION  &kp SQT            &trans
-&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP              &kp ENTER                         &trans        &kp HASH           &trans
-&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                       &kp HOME               &kp PG_UP  &kp ENTER     &kp PG_DN          &kp END
-                                   &kp A                                                                               &kp B
+&kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
+&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
+&kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
+&kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
+&kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
+                                   &kp A                                                              &kp B
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -196,12 +119,12 @@
         mac_default_layer {
             label = "Def";
             bindings = <
-&kp ESC    &kp Q        &kp W     &kp E      &kp R                   &kp T            &kp Y     &kp U          &kp I      &kp O              &kp P                   &kp AT
-&kp TAB    &kp A        &kp S     &kp D      &kp F                   &kp G            &kp H     &kp J          &kp K      &kp L              &kp MINUS               &kp TAB
-&kp LSHFT  &mt LSHFT Z  &kp X     &kp C      &kp V                   &kp B            &kp N     &kp M          &kp COMMA  &kp DOT            &mt RSHFT FSLH          &kp RSHFT
-&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM LANGUAGE_1  &kp BACKSPACE             &lt MAC_SCR ENTER  &lt SETTING LANGUAGE_2  &kp DEL
-&kp RCTRL  &kp LEFT     &kp UP    &kp SPACE  &kp DOWN                                           &kp RIGHT      &kp HOME   &kp PG_UP          &kp ENTER               &kp PG_DN
-                                  &kp END                                                                      &kp A
+&kp ESC    &kp Q        &kp W      &kp E     &kp R                   &kp T                       &kp Y          &kp U              &kp I      &kp O                   &kp P           &kp AT
+&kp TAB    &kp A        &kp S      &kp D     &kp F                   &kp G                       &kp H          &kp J              &kp K      &kp L                   &kp MINUS       &kp TAB
+&kp LSHFT  &mt LSHFT Z  &kp X      &kp C     &kp V                   &kp B                       &kp N          &kp M              &kp COMMA  &kp DOT                 &mt RSHFT FSLH  &kp RSHFT
+&kp LCTRL  &kp LALT     &kp LGUI             &lt MAC_FNC LANGUAGE_1  &lt MAC_NUM LANGUAGE_2      &kp BACKSPACE  &lt MAC_SCR ENTER             &lt SETTING LANGUAGE_2  &kp DEL         &kp RCTRL
+&kp LEFT   &kp UP       &kp SPACE  &kp DOWN  &kp RIGHT                                                          &kp HOME           &kp PG_UP  &kp ENTER               &kp PG_DN       &kp END
+                                   &kp A                                                                                           &kp B
             >;
 
             sensor-bindings =
@@ -213,7 +136,7 @@
             label = "Fnc";
             bindings = <
 &kp LC(ESC)  &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(F)      &kp LS(COMMA)  &kp LS(DOT)  &kp LS(N6)  &kp LS(N5)    &kp LS(N4)   &trans
-&trans       &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
+&tog_ls      &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &kp LS(N8)     &kp LS(N9)   &kp AT      &kp AMPS      &kp LS(SQT)  &trans
 &kp LSHFT    &trans     &trans     &trans       &trans     &mkp MB3       &kp LBKT       &kp RBKT     &kp LS(N1)  &kp LS(FSLH)  &kp SQT      &trans
 &kp LCTRL    &kp LGUI   &kp LALT                &trans     &trans         &kp BKSP       &kp ENTER                &trans        &kp LS(N3)   &trans
 &kp LEFT     &kp UP     &kp SPACE  &kp DOWN     &kp RIGHT                                &kp HOME     &kp PG_UP   &kp ENTER     &kp PG_DN    &kp END
@@ -263,7 +186,7 @@
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &bt BT_CLR_ALL  &trans      &trans     &trans     &trans     &trans
 &trans      &trans        &trans        &trans        &trans        &trans            &trans          &trans      &trans     &trans     &trans     &trans
 &trans      &trans        &trans        &trans        &trans        &trans            &studio_unlock  &touchpass  &trans     &trans     &trans     &trans
-&trans      &trans        &trans                      &to WIN_DEF   &to MAC_DEF       &trans          &touchpass             &trans     &trans     &trans
+&trans      &trans        &trans                      &to WIN_DEF   &to MAC_DEF       &trans          &trans                 &trans     &trans     &trans
 &kp LEFT    &kp UP        &kp SPACE     &kp DOWN      &kp RIGHT                                       &kp HOME    &kp PG_UP  &kp ENTER  &kp PG_DN  &kp END
                                         &kp A                                                                     &kp B
             >;
