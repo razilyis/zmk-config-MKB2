@@ -1,5 +1,14 @@
 # History
 
+## 2026-03-05
+- **目的**: MKB2 の `TouchPass` ブランチにて、基本の ZMK を `v0.3-branch` に更新し、PMW3610 ドライバを `dev-v0.3_against-runaway` に変更する。
+- **実施内容**:
+    - `config/west.yml` の `zmk` プロジェクトを `zmkfirmware` の `v0.3-branch` に変更。
+    - `zmk-pmw3610-driver` を `TouchPass` (razilyis) の `dev-v0.3_against-runaway` に変更。
+- **影響範囲**: ZMKコアバージョンおよびPMW3610ドライバの動作。
+- **動作確認方法**: CIビルドが問題なく通ること、および実機にてトラックボールのレイヤー閾値機能が意図通り動くかの確認。
+- **次の候補**: 新しいPMW3610ドライバの挙動テストおよび閾値パラメーターの調整。
+
 ## 2026-02-25
 - **目的**: Keymap Editor (GUI) での利便性向上のため、Behavior 定義を外部インクルードから直接記述に変更。
 - **実施内容**:
