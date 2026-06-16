@@ -2,12 +2,12 @@
   "repository": "razilyis/zmk-config-MKB2",
   "branch": "main",
   "target": "all",
-  "status": "cancelled",
-  "raw_status": "cancelled",
-  "color": "#6a737d",
-  "sha": "fba87660781378b4cf78d9511ca4daa16acb44b7",
-  "run_id": "27586667951",
-  "run_number": "64",
-  "run_url": "https://github.com/razilyis/zmk-config-MKB2/actions/runs/27586667951",
-  "generated_at": "2026-06-16T01:08:51Z"
+  "status": "passing",
+  "raw_status": "success",
+  "color": "#2ea44f",
+  "sha": "acc41f1a09a13b2d2e91367a22839c02a1ad1764",
+  "run_id": "27651196258",
+  "run_number": "70",
+  "run_url": "https://github.com/razilyis/zmk-config-MKB2/actions/runs/27651196258",
+  "generated_at": "2026-06-16T22:15:46Z"
 }
