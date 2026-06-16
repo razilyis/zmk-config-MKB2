@@ -21,6 +21,24 @@
 };
 
 / {
+    macros {
+        mac_ime: mac_ime {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE)>;
+        };
+    };
+
+    behaviors {
+        lt_ime: lt_ime {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&mac_ime>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -59,7 +77,7 @@
 &kp ESCAPE  &kp Q             &kp W      &kp E     &kp R        &kp T                 &kp Y          &kp U        &kp I      &kp O             &kp P                  &kp AT_SIGN
 &kp TAB     &kp A             &kp S      &kp D     &kp F        &kp G                 &kp H          &kp J        &kp K      &kp L             &kp MINUS              &kp TAB
 &kp LSHFT   &mt LEFT_SHIFT Z  &kp X      &kp C     &kp V        &kp B                 &kp N          &kp M        &kp COMMA  &kp DOT           &mt RIGHT_SHIFT SLASH  &kp RIGHT_SHIFT
-&kp LCTRL   &kp LGUI          &kp LALT             &lt 1 SPACE  &lt 3 LANGUAGE_2      &kp BACKSPACE  &lt 2 ENTER             &lt 8 LANGUAGE_1  &kp DELETE             &kp RCTRL
+&kp LCTRL   &kp LGUI          &kp LALT             &lt 1 SPACE  &lt_ime 3 0           &kp BACKSPACE  &lt 2 ENTER             &lt 8 LANGUAGE_1  &kp DELETE             &kp RCTRL
 &kp LEFT    &kp UP            &kp SPACE  &kp DOWN  &kp RIGHT                                         &kp HOME     &kp PG_UP  &kp ENTER         &kp PG_DN              &kp END
                                          &kp A                                                                    &kp B
             >;
