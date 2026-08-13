@@ -5,9 +5,9 @@
   "status": "passing",
   "raw_status": "success",
   "color": "#2ea44f",
-  "sha": "3f6f68ed00410a21115e0733ed98a2d5913574c0",
-  "run_id": "31638048185",
-  "run_number": "127",
-  "run_url": "https://github.com/razilyis/zmk-config-MKB2/actions/runs/31638048185",
-  "generated_at": "2026-08-12T20:42:39Z"
+  "sha": "d8d5f1678fa745ef0f9bbf38936ce5accb4da467",
+  "run_id": "31741063109",
+  "run_number": "128",
+  "run_url": "https://github.com/razilyis/zmk-config-MKB2/actions/runs/31741063109",
+  "generated_at": "2026-08-13T20:39:54Z"
 }
